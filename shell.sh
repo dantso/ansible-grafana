@@ -30,7 +30,7 @@ scrape_configs:
       - targets: ['localhost:9090']
 EOF
 sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml
-sudo bash /home/ubuntu/grafana/prom.sh &
+sudo bash /home/ec2-user/ansible-grafana/prom.sh &
 PID=$!
 sleep 10
 kill $PID
