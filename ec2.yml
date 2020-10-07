@@ -4,7 +4,7 @@
   tasks:
     - name: Launch instance
       ec2:
-         key_name: ansible
+         key_name: Ansible
          group: grafana_group
          instance_type: t2.micro
          image: ami-06e55c17bfd9792fc
