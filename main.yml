@@ -8,7 +8,7 @@
          key_name: ansible
          group: grafana_group
          instance_type: t2.micro
-         image: ami-49f0762d
+         image: ami-0dba2cb6798deb6d8
          wait: true
          region: us-east-1
       register: ec2
