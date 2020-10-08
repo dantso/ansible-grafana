@@ -53,6 +53,7 @@
         path: /usr/local/bin/prometheus
         owner: prometheus
         group: prometheus
+        mode: '755'
     - name: Change file permission
       file:
         path: /usr/local/bin/promtool
@@ -97,6 +98,7 @@
       copy:
         src: /home/ubuntu/ansible-grafana/prometheus.service
         dest: /etc/systemd/system/prometheus.service
+
     - name: Start prometheus
       systemd:
         state: started
