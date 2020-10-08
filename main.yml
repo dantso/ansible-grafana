@@ -8,7 +8,6 @@
       apt: pkg={{item}} state=installed
       with_items:
         - nginx
-      become: true
     - name: Create prometheus user
       user:
         name: prometheus
@@ -85,12 +84,82 @@
         path: /home/ubuntu/prometheus-2.21.0.linux-amd64.tar.gz
     - name: Copy file
       copy:
-        src: C:/Users/Sonu_2/Desktop/Grafana/prometheus.yml
+        src: /home/ubuntu/grafana/prometheus.yml
         dest: /etc/prometheus/prometheus.yml
+    - name: Change file permission
+      file:
+        path: /etc/prometheus/prometheus.yml
+        owner: "{{ prometheus }}"
+        group: "{{ prometheus }}"
     - name: run shell script
       shell:
         sudo -u prometheus /usr/local/bin/prometheus \
         --config.file /etc/prometheus/prometheus.yml \
         --storage.tsdb.path /var/lib/prometheus/ \
         --web.console.templates=/etc/prometheus/consoles \
-        --web.console.libraries=/etc/prometheus/console_libraries
+        --web.console.libraries=/etc/prometheus/console_libraries &
+    - name: Copy file
+      copy:
+        src: /home/ubuntu/grafana/prometheus.service
+        dest: /etc/systemd/system/prometheus.service
+    - name: Start prometheus
+      systemd:
+        state: started
+        name: prometheus
+        daemon_reload: yes
+        enabled: yes
+    - name: Unarchive a file that needs to be downloaded
+      unarchive:
+        src: https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
+        dest: /home/ubuntu
+        remote_src: yes
+    - name: Copy file
+      copy:
+        src: /home/ubuntu/node_exporter-1.0.1.linux-amd64/node_exporter
+        dest: /usr/local/bin/
+    - name: Change file permission
+      file:
+        path: /usr/local/bin/node_exporter
+        owner: "{{ node_exporter }}"
+        group: "{{ node_exporter }}"
+    - name: Delete unwanted files
+      file:
+        state: absent
+        path: /home/ubuntu/node_exporter-1.0.1.linux-amd64.tar.gz
+    - name: Delete unwanted files
+      file:
+        state: absent
+        path: /home/ubuntu/node_exporter-1.0.1.linux-amd64
+    - name: Copy file
+      copy:
+        src: /home/ubuntu/grafana/node_exporter.service
+        dest: /etc/systemd/system/node_exporter.service
+    - name: Start node_exporter
+      systemd:
+        state: started
+        name: node_exporter
+        daemon_reload: yes
+        enabled: yes
+    - name: Copy file
+      copy:
+        src: /home/ubuntu/grafana/prometheus2.yml
+        dest: /etc/prometheus/prometheus.yml
+    - name: Restart prometheus
+      systemd:
+        state: restarted
+        name: prometheus
+    - name: Download adduser libfontconfig
+      apt: pkg={{item}} state=installed
+      with_items:
+        - adduser
+        - libfontconfig   
+      unarchive:
+        src: https://dl.grafana.com/oss/release/grafana_7.2.0_amd64.deb
+        dest: /home/ubuntu
+        remote_src: yes
+    - name: Start grafana
+      systemd:
+        state: started
+        name: grafana-server
+        daemon_reload: yes
+        enabled: yes
