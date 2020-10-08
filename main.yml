@@ -6,9 +6,7 @@
     - name: Update apt-get repo
       apt: update_cache=yes force_apt_get=yes
     - name: Download nginx
-      apt: pkg={{item}} state=installed
-      with_items:
-        - nginx
+      apt: pkg=['nginx'] state=installed
     - name: Create prometheus user
       user:
         name: prometheus
