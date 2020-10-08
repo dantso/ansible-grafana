@@ -5,7 +5,7 @@
   tasks:
     - name: Launch instance
       ec2:
-         key_name: ansible
+         key_name: Ansible
          group: grafana_group
          instance_type: t2.micro
          image: ami-0dba2cb6798deb6d8
@@ -22,8 +22,8 @@
         name: "{{ ec2.instances[0].public_dns_name }}"
         groups: ec2_hosts
         ansible_host: "{{ ec2.instances[0].public_dns_name }}"
-        ansible_ssh_user: ec2-user
-        ansible_ssh_private_key_file: ~/ansible.pem
+        ansible_ssh_user: ubuntu
+        ansible_ssh_private_key_file: ~/Ansible.pem
   
     - name: Wait for a while
       pause: seconds=60
