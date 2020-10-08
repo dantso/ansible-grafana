@@ -51,13 +51,13 @@
     - name: Change file permission
       file:
         path: /usr/local/bin/prometheus
-        owner: "{{ prometheus }}"
-        group: "{{ prometheus }}"
+        owner: prometheus
+        group: prometheus
     - name: Change file permission
       file:
         path: /usr/local/bin/promtool
-        owner: "{{ prometheus }}"
-        group: "{{ prometheus }}"
+        owner: prometheus
+        group: prometheus
     - name: Copy file
       copy:
         src: /home/ubuntu/prometheus-2.21.0.linux-amd64/consoles
@@ -69,13 +69,13 @@
     - name: Change file permission
       file:
         path: /etc/prometheus/consoles
-        owner: "{{ prometheus }}"
-        group: "{{ prometheus }}"
+        owner: prometheus
+        group: prometheus
     - name: Change file permission
       file:
         path: /etc/prometheus/console_libraries
-        owner: "{{ prometheus }}"
-        group: "{{ prometheus }}"
+        owner: prometheus
+        group: prometheus
     - name: Delete unwanted files
       file:
         state: absent
@@ -91,8 +91,8 @@
     - name: Change file permission
       file:
         path: /etc/prometheus/prometheus.yml
-        owner: "{{ prometheus }}"
-        group: "{{ prometheus }}"
+        owner: prometheus
+        group: prometheus
     - name: run shell script
       shell:
         sudo -u prometheus /usr/local/bin/prometheus \
@@ -122,8 +122,8 @@
     - name: Change file permission
       file:
         path: /usr/local/bin/node_exporter
-        owner: "{{ node_exporter }}"
-        group: "{{ node_exporter }}"
+        owner: node_exporter
+        group: node_exporter
     - name: Delete unwanted files
       file:
         state: absent
