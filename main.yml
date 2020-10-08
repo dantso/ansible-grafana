@@ -25,7 +25,7 @@
         shell: /bin/false
         system: no 
         createhome: no
-        become_user: root
+      become_user: root
     - name: Create directory
       file:
         path: "{{ item }}"
