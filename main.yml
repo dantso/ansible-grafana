@@ -30,7 +30,6 @@
 
 - name: run roles on remote box
   hosts: ec2-hosts
-  connection: local
   gather_facts: true
   become: true
   roles:
