@@ -146,8 +146,8 @@
         dest: /etc/prometheus/prometheus.yml
     - name: Restart prometheus
       systemd:
-        state: restarted
         name: prometheus
+        state: restarted
     - name: Download adduser libfontconfig
       apt: pkg={{item}} state=installed
       with_items:
