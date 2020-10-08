@@ -3,8 +3,9 @@
   gather_facts: true
   become: true
   tasks:
-    - name: Update apt-get repo
-      apt: update_cache=yes force_apt_get=yes
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
     - name: Download nginx
       apt: pkg=['nginx'] 
       state: latest
