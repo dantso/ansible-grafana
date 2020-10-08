@@ -6,7 +6,7 @@
     - name: Launch instance
       ec2:
          key_name: ansible
-         group: prometheus-group
+         group: grafana_group
          instance_type: t2.micro
          image: ami-49f0762d
          wait: true
