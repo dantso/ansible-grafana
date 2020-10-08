@@ -7,8 +7,9 @@
       apt:
         update_cache: yes
     - name: Download nginx
-      apt: pkg=['nginx'] 
-      state: latest
+      apt:  
+        pkg:
+        -  nginx
     - name: Create prometheus user
       user:
         name: prometheus
@@ -150,9 +151,8 @@
         name: prometheus
         state: restarted
     - name: Download adduser libfontconfig
-      apt: pkg={{item}} 
-      state: latest
-      with_items:
+      apt: 
+        pkg:
         - adduser
         - libfontconfig   
     - name: Download grafana  
