@@ -30,7 +30,6 @@ scrape_configs:
       - targets: ['localhost:9090']
 EOF
 sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml
-sudo -u prometheus /usr/local/bin/prometheus --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /var/lib/prometheus/ --web.console.templates=/etc/prometheus/consoles --web.console.libraries=/etc/prometheus/console_libraries &
 sudo cat <<EOF >/etc/systemd/system/prometheus.service
 [Unit]
 Description=Prometheus
