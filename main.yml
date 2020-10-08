@@ -119,6 +119,7 @@
         path: /usr/local/bin/node_exporter
         owner: node_exporter
         group: node_exporter
+        mode: '755'
     - name: Delete unwanted files
       file:
         state: absent
