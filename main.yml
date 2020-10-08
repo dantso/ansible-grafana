@@ -86,7 +86,7 @@
         path: /home/ubuntu/prometheus-2.21.0.linux-amd64.tar.gz
     - name: Copy file
       copy:
-        src: /home/ubuntu/grafana/prometheus.yml
+        src: /home/ubuntu/ansible-grafana/prometheus.yml
         dest: /etc/prometheus/prometheus.yml
     - name: Change file permission
       file:
@@ -102,7 +102,7 @@
         --web.console.libraries=/etc/prometheus/console_libraries &
     - name: Copy file
       copy:
-        src: /home/ubuntu/grafana/prometheus.service
+        src: /home/ubuntu/ansible-grafana/prometheus.service
         dest: /etc/systemd/system/prometheus.service
     - name: Start prometheus
       systemd:
@@ -134,7 +134,7 @@
         path: /home/ubuntu/node_exporter-1.0.1.linux-amd64
     - name: Copy file
       copy:
-        src: /home/ubuntu/grafana/node_exporter.service
+        src: /home/ubuntu/ansible-grafana/node_exporter.service
         dest: /etc/systemd/system/node_exporter.service
     - name: Start node_exporter
       systemd:
@@ -144,7 +144,7 @@
         enabled: yes
     - name: Copy file
       copy:
-        src: /home/ubuntu/grafana/prometheus2.yml
+        src: /home/ubuntu/ansible-grafana/prometheus2.yml
         dest: /etc/prometheus/prometheus.yml
     - name: Restart prometheus
       systemd:
