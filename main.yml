@@ -6,7 +6,8 @@
     - name: Update apt-get repo
       apt: update_cache=yes force_apt_get=yes
     - name: Download nginx
-      apt: pkg=['nginx'] state=installed
+      apt: pkg=['nginx'] 
+      state: latest
     - name: Create prometheus user
       user:
         name: prometheus
@@ -148,7 +149,8 @@
         name: prometheus
         state: restarted
     - name: Download adduser libfontconfig
-      apt: pkg={{item}} state=installed
+      apt: pkg={{item}} 
+      state: latest
       with_items:
         - adduser
         - libfontconfig   
