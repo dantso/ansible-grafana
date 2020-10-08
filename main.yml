@@ -29,7 +29,7 @@
       pause: seconds=60
 
 - name: run roles on remote box
-  hosts: ec2-hosts
+  hosts: ec2_hosts
   become: true
   roles:
     - ubuntu_update
