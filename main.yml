@@ -1,4 +1,4 @@
-- hosts: 3.92.137.144
+- hosts: localhost
   connection: local
   gather_facts: true
   become: true
