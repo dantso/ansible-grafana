@@ -1,4 +1,5 @@
-- hosts: all
+- hosts: 3.92.137.144
+  connection: local
   gather_facts: true
   become: true
   tasks:
