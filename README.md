@@ -1,4 +1,4 @@
-#### Step 1:
+### Step 1:
 
 ### Prometheus and Grafana
 
@@ -425,7 +425,7 @@ $ sudo systemctl daemon-reload && sudo systemctl enable grafana-server && sudo s
 Enter the public ip with port 3000 online to check the grafana dashboard. Add a new data souce and select prometheus as the data source. Set the prometheus server url as the public ip url with port 9090. Click add to test the connection and save the new data source.
 
 
-#### Step 2
+### Step 2
 
 ### Create a shell script for the entire process of step 1. 
 
@@ -436,7 +436,7 @@ $ sudo bash shell.sh
 ```
 
 
-#### Step 3
+### Step 3
 
 ### Convert the shell script into an Ansible playbook.
 
