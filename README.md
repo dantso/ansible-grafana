@@ -429,7 +429,7 @@ Enter the public ip with port 3000 online to check the grafana dashboard. Add a 
 
 ### Create a shell script for the entire process of step 1. 
 
-# Run the shell script. Everything should work.
+### Run the shell script. Everything should work.
 
 ```
 $ sudo bash shell.sh
