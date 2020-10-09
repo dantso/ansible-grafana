@@ -440,6 +440,10 @@ $ sudo bash shell.sh
 
 ### Convert the shell script into an Ansible playbook.
 
+Please run aws-configure to configure and set up your aws environment.
+Make sure to change the values in main.yml in correspondence to you aws set up.
+Also, copy your key into the ansible-grafana directory.
+
 ```
 $ sudo ansible-playbook main.yml
 ```
